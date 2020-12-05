@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Person</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Select category</ion-label>
+      <ion-select value="{{ selected_category_id }}" [(ngModel)]="category_id">
+        <ion-select-option
+          *ngFor="let category of categories"
+          value="{{ category.id }}"
+          >{{ category.name }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input [(ngModel)]="personName"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="addPerson()">Submit</ion-button>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let person of persons">
+      <ion-item-options side="start">
+        <ion-item-option (click)="editPerson(person)">Edit</ion-item-option>
+      </ion-item-options>
+
+      <ion-item>
+        <ion-label>{{ person.person }}</ion-label>
+        <ion-badge color="primary">{{ person.category }}</ion-badge>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deletePerson(person.id)"
+          >Delete</ion-item-option
+        >
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

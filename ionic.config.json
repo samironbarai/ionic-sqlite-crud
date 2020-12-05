@@ -1,5 +1,7 @@
 {
   "name": "ionic-sqlite-crud",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
